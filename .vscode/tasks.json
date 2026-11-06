@@ -1,0 +1,39 @@
+{
+  // YTuner (Go port) build tasks.
+  // Windows uses build.cmd, Linux/macOS use build.sh (both pure Go, CGO_ENABLED=0).
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build all targets",
+      "detail": "Cross-compile every release target -> bin/<os>-<arch>/ytuner[.exe]",
+      "type": "shell",
+      "command": "./build.sh",
+      "args": ["cross"],
+      "windows": {
+        "command": "${workspaceFolder}\\build.cmd",
+        "args": ["cross"],
+        "options": { "shell": { "executable": "cmd.exe", "args": ["/d", "/c"] } }
+      },
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "problemMatcher": "$go",
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Build host",
+      "detail": "Build for the current OS -> bin/ytuner[.exe]",
+      "type": "shell",
+      "command": "./build.sh",
+      "args": ["build"],
+      "windows": {
+        "command": "${workspaceFolder}\\build.cmd",
+        "args": ["build"],
+        "options": { "shell": { "executable": "cmd.exe", "args": ["/d", "/c"] } }
+      },
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$go",
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    }
+  ]
+}

@@ -2,11 +2,14 @@
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 # Binaries for programs and plugins
+bin/
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
+*.test
+*.out
 
 # Test binary, built with `go test -c`
 *.test
@@ -31,3 +34,11 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+claude/
+
+# runtime data when started from this folder
+cache/
+config/
+db/
+ytuner.ini

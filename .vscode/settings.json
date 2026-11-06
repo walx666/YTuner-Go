@@ -1,0 +1,61 @@
+{
+  // --- Go toolchain -------------------------------------------------------
+  // Go comes from MSYS2 (not on PATH). Its go.exe is "trimmed" and needs
+  // GOROOT set explicitly. Adjust the paths if MSYS2 lives elsewhere.
+  "go.alternateTools": {
+    "go": "C:\\dev\\msys64\\mingw64\\bin\\go.exe"
+  },
+  "go.goroot": "C:\\dev\\msys64\\mingw64\\lib\\go",
+  "go.toolsEnvVars": {
+    "GOROOT": "C:\\dev\\msys64\\mingw64\\lib\\go",
+    "CGO_ENABLED": "0"
+  },
+  "go.testEnvVars": {
+    "CGO_ENABLED": "0"
+  },
+  "go.useLanguageServer": true,
+  "go.lintTool": "go vet",
+  "go.testFlags": ["-count=1"],
+  "gopls": {
+    "ui.semanticTokens": true,
+    "formatting.gofumpt": false
+  },
+
+  // --- Editor ---------------------------------------------------------------
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  },
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.associations": {
+    "*.cmd": "bat"
+  },
+  "[bat]": {
+    // batch labels/goto are unreliable with LF line endings
+    "files.eol": "\r\n"
+  },
+
+  // --- Keep build output / runtime data out of search ------------------------
+  "search.exclude": {
+    "bin/**": true,
+    "cache/**": true,
+    "db/**": true,
+    "go.sum": true
+  },
+
+  // --- Terminal: make MSYS2 Go usable in the integrated terminal -------------
+  "terminal.integrated.env.windows": {
+    "GOROOT": "C:\\dev\\msys64\\mingw64\\lib\\go",
+    "CGO_ENABLED": "0"
+  }
+}
